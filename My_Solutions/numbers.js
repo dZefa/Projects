@@ -81,6 +81,49 @@ var fibonacciSeq = function(n) {
 
 // **Prime Factorization** - Have the user enter a number and find all Prime Factors (if there are any) and display them.
 
+var primeFactorization = function(num) {
+	//input: one number
+	//output: all prime factors of number
+	//take number and see if divisible by 2 or 3
+	// if it is, run recursion
+	//if not, push to an array if not there
+	var resultArr = [];
+	var checkedSqrt = false;
+
+	function findAllPrimes(num) {
+		if (!checkedSqrt) {
+			checkedSqrt = true;
+			if (Math.sqrt(num) % 1 === 0) {
+				resultArr.push(Math.sqrt(num));
+			}
+		}
+
+		if (num % 2 === 0) {
+			if (resultArr.indexOf(2) === -1) {
+				resultArr.push(2);
+			}
+			findAllPrimes(num / 2);
+		} else if (num % 3 === 0) {
+			if (resultArr.indexOf(3) === -1) {
+				resultArr.push(3);
+			}
+			findAllPrimes(num / 3);
+		} else {
+			resultArr.push(num);
+		}
+	};
+
+	findAllPrimes(num);
+
+	if (resultArr.length === 1) {
+		return num + ' has no prime factors';
+	}
+
+	return resultArr.sort(function(a, b) {
+		return a - b;
+	});
+};
+
 // **Next Prime Number** - Have the program find prime numbers until the user chooses to stop asking for the next one.
 
 // **Find Cost of Tile to Cover W x H Floor** - Calculate the total cost of tile it would take to cover a floor plan of width and height, using a cost entered by the user.
