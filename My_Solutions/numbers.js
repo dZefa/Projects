@@ -82,11 +82,6 @@ var fibonacciSeq = function(n) {
 // **Prime Factorization** - Have the user enter a number and find all Prime Factors (if there are any) and display them.
 
 var primeFactorization = function(num) {
-	//input: one number
-	//output: all prime factors of number
-	//take number and see if divisible by 2 or 3
-	// if it is, run recursion
-	//if not, push to an array if not there
 	var resultArr = [];
 	var checkedSqrt = false;
 
