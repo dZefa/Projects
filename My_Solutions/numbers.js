@@ -121,6 +121,71 @@ var primeFactorization = function(num) {
 
 // **Next Prime Number** - Have the program find prime numbers until the user chooses to stop asking for the next one.
 
+var findNextPrime = function() {
+	var result, tempNum;
+	var userInput;
+	var isInitialRun = true;
+    var continueToRun = true;
+    var runCount = 0;
+    
+    userInput = prompt('Please input a number you would like to start your search from.');
+    
+	while (isInitialRun) {
+
+		if (Number(userInput) === NaN) {
+			alert('Please input a real NUMBER.');
+		} else {
+            tempNum = Number(userInput);
+            isInitialRun = false;
+        }
+    };
+    
+	while (continueToRun || runCount < 3) {
+
+        if (runCount === 0) {
+            result = findNextPrime(tempNum);
+            
+            userInput = prompt(result + ' is your next Prime Number. Would you like to find the next? (y/n)').toLowerCase();
+        } else {
+            userInput = prompt('Would you like to find the next prime number? Enter y for yes, n for no.').toLowerCase();
+        }
+
+		if (userInput === 'n') {
+			continueToRun = false;
+		}
+
+		if (userInput === 'y') {
+            tempNum = result;
+        }
+
+        runCount += 1;
+        alert('Not a correct input. Please try again. ' (3 - runCount) + ' before automatic quit.')
+
+    };
+    
+    if (runCount === 3) {
+        return alert('Program has automatically exited due to continuous incorrect inputs');
+    }
+
+    return alert('Your last Prime number was ' + result + '. Program will now end.');
+
+	function findNextPrimeNumber(num) {
+        if (num % 2 === 0) {
+            findNextPrimeNumber(num);
+        } else if (num % 3 === 0) {
+            findNextPrimeNumber(num);
+        } else {
+            if (Math.sqrt(num) % 1 === 0) {
+                findNextPrimeNumber(num);
+            }
+
+            return num;
+        }
+	};
+};
+
+findNextPrime();
+
 // **Find Cost of Tile to Cover W x H Floor** - Calculate the total cost of tile it would take to cover a floor plan of width and height, using a cost entered by the user.
 
 // **Mortgage Calculator** - Calculate the monthly payments of a fixed term mortgage over given Nth terms at a given interest rate. Also figure out how long it will take the user to pay back the loan. For added complexity, add an option for users to select the compounding interval (Monthly, Weekly, Daily, Continually).
